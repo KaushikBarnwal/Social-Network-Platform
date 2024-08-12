@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed...</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav>
+        <a href="../index.html">HOME</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="feed.html">Feed</a>
+        <a href="profile.html">Profile</a>
+    </nav>
+    <div class="container">
+        <h2>Feed</h2>
+        <div>
+            <textarea id="postarea" placeholder="What's on Your Mind?" rows="3"></textarea>
+            <button onclick="PostCreateHere()">Post</button>
+        </div>
+        <div id="Feedcontainer"></div>
+    </div>
+    <script>
+        function PostCreateHere(){
+            const content = document.getElementById('postarea').value;
+            createpost(content);
+            document.getElementById('postarea').value = '';
+        }
+        document.addEventListener('DOMContentLoaded', renderFeed);
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>

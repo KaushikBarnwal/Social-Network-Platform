@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewing Profile...</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <nav>
+        <a href="../index.html">HOME</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="feed.html">Feed</a>
+        <a href="profile.html">Profile</a>
+    </nav>
+    <div class="container">
+        <h2>Profile</h2>
+        <div class="ProfileContainer"></div>
+        <h3>Edit Profile</h3>
+        <form id="EditProfileForm" onsubmit="ProfileEditHere(event)">
+            <label for="ProfilePic">Profile Picture URL: </label>
+            <input type="text" id="ProfilePic">
+            <label for="Bio">Bio: </label>
+            <textarea id="Bio" rows="3"></textarea>
+            <label for="PersonalInfo">Personal Info: </label>
+            <input type="text" id="PersonalInfo"><br>
+            <button type="submit">Save</button>
+        </form>
+        <h3>Friend Requests</h3>
+        <div class="FriendRequestcontainer"></div>
+        <h3>Friends' List</h3>
+        <div class="FriendsContainer"></div>
+    </div>
+    <script>
+        function ProfileEditHere(event) {
+            event.preventDefault();
+            const proPic = document.getElementById('ProfilePic').value;
+            const proBio = document.getElementById('Bio').value;
+            const proInfo = document.getElementById('PersonalInfo').value;
+            ProfileSaved(proPic, proBio, proInfo);
+            renderProfile();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+        renderProfile();
+        renderFR();
+        renderFriends();
+    });
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>
