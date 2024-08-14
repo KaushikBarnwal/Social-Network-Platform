@@ -26,9 +26,9 @@ let friends = {
 }
 // login - SignUp function
 function login(username, password) {
-    const user = users.find(u => u.username === username && u.password === password);
-    console.log(user)
-    console.log(localStorage)
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || users;
+    const user = storedUsers.find(u => u.username === username && u.password === password);
+   console.log(storedUsers)
     //
     if (!user) {
         errorSpin.textContent = 'Invalid username or password';
@@ -62,11 +62,9 @@ function signup(username, password) {
     }
     const user = {id: users.length + 1, username, password};
     users.push(user);
-    //
-    console.log(user);
-    console.log(users)
-    //
-    localStorage.setItem('userid', user.id);
+ 
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('userid', user.id)
     // updateLocalStorage('userid',user.id);
     // console.log(localStorage)
     spinner.style.display = 'none';
